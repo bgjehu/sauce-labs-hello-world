@@ -6,5 +6,5 @@ app.get('/api/message', function (req, res) {
 });
 
 app.listen(port, function () {
-   console.log(`API Server On ${port}`);
+   console.log(`Dev Server Running On ${port}`);
 });

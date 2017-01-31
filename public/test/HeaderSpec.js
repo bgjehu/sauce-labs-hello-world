@@ -1,7 +1,8 @@
+'use strict';
+
 import React from 'react';
 import { shallow } from 'enzyme';
-const expect = require('chai').expect;
-
+import { expect } from 'chai';
 import Header from '../src/Header';
 
 describe('<Header />', () => {
