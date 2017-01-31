@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev-server": "node private/src",
-    "webpack-server": "mkdir -p build && cp public/src/index.html build/index.html && webpack-dev-server --config webpack.config.js --content-base build",
-    "utest": "mocha --compilers js:babel-core/register --reporter spec --bail --ext js --check-leaks public/test/",
-    "utest-server": "mkdir -p test/public && cp public/test/index.html test/public/index.html && webpack --config webpack.test.config.js && http-server -p 8082 test/public"
+    "dev-server": "node server/src",
+    "webpack-server": "mkdir -p build/client && cp client/src/index.html build/client/index.html && webpack-dev-server --config webpack.config.js --content-base build/client",
+    "client-unit-test": "mocha --compilers js:babel-core/register --reporter spec --bail --ext js --check-leaks client/test/unit",
+    "serve-client-unit-test": "mkdir -p test/client/unit && cp client/test/unit/index.html test/client/unit/index.html && webpack --config webpack.test.config.js && http-server -p 8082 test/client/unit"
   },
   "repository": {
     "type": "git",

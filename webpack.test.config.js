@@ -1,8 +1,8 @@
 module.exports = {
-    entry: './public/test/test.js',
+    entry: './client/test/unit/index.js',
     output: {
-        path: __dirname + '/test/public',
-        filename: 'test.js'
+        path: __dirname + '/test/client/unit',
+        filename: 'index.js'
     },
     debug: true,
     module : {

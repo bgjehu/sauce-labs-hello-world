@@ -5,7 +5,9 @@ This is a hello world web app using `Express` and `Node` in the back, `React` in
 # Install
 
 ```sh
+# clone repository
 git clone https://github.com/bgjehu/sauce-labs-hello-world.git
+# install dependencies
 npm install
 ```
 
@@ -14,10 +16,12 @@ npm install
 run these two commands in different tabs
 
 ```sh
+# start Node API server in the back
 npm run dev-server
 ```
 
 ```sh
+# start webpack-dev-server to serve React app but proxy API to Node API server
 npm run webpack-server
 ```
 
@@ -28,13 +32,15 @@ then open `http://127.0.0.1:8080`, and you should see `Hello World` coming from 
 ## In `Node`
 
 ```sh
-npm run utest
+# run client unit test in Node
+npm run client-unit-test
 ```
 
 ## In broswer
 
 ```sh
-npm run utest-server
+# serve client unit test in 127.0.0.1
+npm run serve-client-unit-test
 ```
 
 open `http://127.0.0.1:8082` in your broswer
@@ -44,14 +50,17 @@ open `http://127.0.0.1:8082` in your broswer
 run these three sets of commands on different tabs
 
 ```sh
+# create Sauce Connect Tunnel
 sc -u YOUR_USERNAME -k YOUR_ACCESS_KEY -i TUNNEL_ID
 ```
 
 ```sh
-npm run utest-server
+# serve client unit test in 127.0.0.1
+npm run serve-client-unit-test
 ```
 
 ```sh
+# ask Sauce Labs to run test in browers through tunnel
 curl -X POST https://saucelabs.com/rest/v1/YOUR_USERNAME/js-tests \
      -u YOUR_USERNAME:YOUR_ACCESS_KEY \
      -d platforms='[["Windows 8", "internet explorer", "10"], ["OS X 10.8", "safari", "6"]]' \
@@ -65,6 +74,7 @@ And it should return job IDs.
 To Check Test Report, use command
 
 ```sh
+# check test report
 curl -X POST https://saucelabs.com/rest/v1/YOUR_USERNAME/js-tests/status \
      -u YOUR_USERNAME:YOUR_ACCESS_KEY \
      -H 'Content-Type: application/json' \
