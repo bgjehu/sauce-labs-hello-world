@@ -1,6 +1,14 @@
 # Sauce Labs Hello World
 
-This is a hello world web app using `Express` and `Node` in the back, `React` in the front, and `Mocha`, `Chai`, `Enzyme`, for testing locally in `Node` and broswers and cross-browser-ly in the cloud with `Sauce Labs`.
+* is a hello world web app project.
+* uses `express` and `node` as the API Server.
+* uses `react` as the view, `webpack` as bundler, `webpack-dev-server` as the content base server.
+* uses `mocha` as test runner.
+* uses `chai` as assertion library.
+* uses `enzyme` for `react` components' unit testing.
+* uses `selenium` for front end functional testing including `selenium-standalone` and `selenium-webdriver`.
+* uses `babel` to transpile ES6
+* uses `Sauce Labs` from cross browsers testing.
 
 # Install
 
@@ -16,42 +24,42 @@ npm install
 run these two commands in different tabs
 
 ```sh
-# start Node API server in the back
+# start 'node' API server in the back
 npm run dev-server
 ```
 
 ```sh
-# start webpack-dev-server to serve React app but proxy API to Node API server
+# start 'webpack-dev-server' to serve 'react' app but proxy API to 'node' API server
 npm run webpack-server
 ```
 
-then open `http://127.0.0.1:8080`, and you should see `Hello World` coming from the back and rendering in the front.
+then open `http://127.0.0.1:8080`, and you should see `'Hello World!'` coming from the back and rendering in the front.
 
-# Test in Local
+# Client Unit Test in Local
 
-## In `Node`
+## In `node`
 
 ```sh
-# run client unit test in Node
+# run client unit test in node
 npm run client-unit-test
 ```
 
-## In broswer
+## In browser
 
 ```sh
 # serve client unit test in 127.0.0.1
 npm run serve-client-unit-test
 ```
 
-open `http://127.0.0.1:8082` in your broswer
+open `http://127.0.0.1:8082` in your browser
 
-# Test in `Sauce Labs`
+# Client Unit Test in `Sauce Labs`
 
 run these three sets of commands on different tabs
 
 ```sh
 # create Sauce Connect Tunnel
-sc -u YOUR_USERNAME -k YOUR_ACCESS_KEY -i TUNNEL_ID
+./sc -u YOUR_USERNAME -k YOUR_ACCESS_KEY -i TUNNEL_ID
 ```
 
 ```sh
@@ -71,7 +79,7 @@ curl -X POST https://saucelabs.com/rest/v1/YOUR_USERNAME/js-tests \
 
 And it should return job IDs.
 
-To Check Test Report, use command
+To check test report, use command
 
 ```sh
 # check test report
@@ -81,10 +89,33 @@ curl -X POST https://saucelabs.com/rest/v1/YOUR_USERNAME/js-tests/status \
      -d '{"js tests": ["JOB_ID", "JOB_ID"]}'
 ```
 
-or Login to your `Sauce Labs` Dashboard.
+or login to your `Sauce Labs` dashboard.
 
 Note
 * `ACCESS_KEY` is not your login password. You should be able to access it in `My Account` page.
-* `TUNNEL_ID` could be anything. It is just a identifier for `Sauce Connect` tunnel. 
+* `TUNNEL_ID` could be anything. It is just a identifier for `Sauce Connect` tunnel.
+ 
+# Client Functional Test in Local
 
+run these four commands in different tabs
+
+```sh
+# start 'node' API server in the back
+npm run dev-server
+```
+
+```sh
+# start 'webpack-dev-server' to serve 'react' app but proxy API to 'node' API server
+npm run webpack-server
+```
+
+```sh
+# start 'selenium-standalone' server
+npm run selenium-server
+```
+
+```sh
+# run client functional test
+npm run client-func-test
+```
 

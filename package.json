@@ -7,7 +7,9 @@
     "dev-server": "node server/src",
     "webpack-server": "mkdir -p build/client && cp client/src/index.html build/client/index.html && webpack-dev-server --config webpack.config.js --content-base build/client",
     "client-unit-test": "mocha --compilers js:babel-core/register --reporter spec --bail --ext js --check-leaks client/test/unit",
-    "serve-client-unit-test": "mkdir -p test/client/unit && cp client/test/unit/index.html test/client/unit/index.html && webpack --config webpack.test.config.js && http-server -p 8082 test/client/unit"
+    "serve-client-unit-test": "mkdir -p test/client/unit && cp client/test/unit/index.html test/client/unit/index.html && webpack --config webpack.test.config.js && http-server -p 8082 test/client/unit",
+    "selenium-server": "selenium-standalone install && selenium-standalone start",
+    "client-func-test": "SELENIUM_REMOTE_URL=http://localhost:4444/wd/hub mocha --compilers js:babel-core/register --reporter spec --bail --ext js --check-leaks client/test/func"
   },
   "repository": {
     "type": "git",
@@ -40,6 +42,8 @@
     "react-addons-css-transition-group": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
     "react-addons-update": "^15.4.2",
+    "selenium-standalone": "^6.0.0",
+    "selenium-webdriver": "^3.0.1",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2"
   }
