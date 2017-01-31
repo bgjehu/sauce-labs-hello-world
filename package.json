@@ -1,0 +1,44 @@
+{
+  "name": "sauce-labs-hello-world",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "utest": "mocha --compilers js:babel-core/register --reporter spec --bail --ext js --check-leaks public/test/",
+    "webpack": "mkdir -p build && cp public/src/index.html build/index.html && webpack-dev-server --content-base build",
+    "server": "node private/src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bgjehu/sauce-labs-hello-world.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bgjehu/sauce-labs-hello-world/issues"
+  },
+  "homepage": "https://github.com/bgjehu/sauce-labs-hello-world#readme",
+  "dependencies": {
+    "express": "^4.14.1",
+    "jquery": "^3.1.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  },
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
+    "babel-register": "^6.22.0",
+    "chai": "^3.5.0",
+    "enzyme": "^2.7.1",
+    "mocha": "^3.2.0",
+    "react-addons-create-fragment": "^15.4.2",
+    "react-addons-css-transition-group": "^15.4.2",
+    "react-addons-test-utils": "^15.4.2",
+    "react-addons-update": "^15.4.2",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2"
+  }
+}
