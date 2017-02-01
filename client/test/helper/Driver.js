@@ -11,7 +11,7 @@ module.exports = () => {
             } : {});
     };
     const serverUrl = () => {
-        return `http://${usingSauceLabs ? `${username}:${accessKey}@ondemand.saucelabs.com:80` : 'localhost:4444'}/wd/hub`;
+        return `http://localhost:${usingSauceLabs ? '4445' : '4444'}/wd/hub`;
     };
     const cap = capabilities();
     const url = serverUrl();

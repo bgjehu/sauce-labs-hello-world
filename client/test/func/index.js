@@ -3,7 +3,7 @@ const Driver = require('../helper/Driver');
 const expect = require('chai').expect;
 
 describe('Page', () => {
-    var driver, driverQuited;
+    var driver;
 
     beforeEach(() => {
         driver = Driver();
@@ -27,7 +27,7 @@ describe('Page', () => {
                             header.getText()
                                 .then((text) => {
                                     //  assert
-                                    expect(text).to.equal('Hello World');
+                                    expect(text).to.equal('Hello World!');
                                     done();
                                 });
                         } else {
@@ -36,21 +36,10 @@ describe('Page', () => {
                         }
                     });
             })
-            .catch((err) => {
-                //  got error in any part of the chain
-                //  close browser
-                driver.quit()
-                    .then(() => {
-                        //  set flag
-                        driverQuited = true;
-
-                        //  bubble error
-                        throw err;
-                    })
-            });
+            .catch(done);
     }).timeout(0);
 
-    afterEach(() => {
-        if (!driverQuited) driver.quit();
+    afterEach((done) => {
+        driver.quit().then(done).catch(done);
     });
 });
