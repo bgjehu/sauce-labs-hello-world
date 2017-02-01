@@ -1,23 +1,19 @@
-module.exports = () => {
-    const webdriver = require('selenium-webdriver');
-    const username = process.env.SAUCE_USERNAME;
-    const accessKey = process.env.SAUCE_ACCESS_KEY;
-    const usingSauceLabs = username && accessKey;
-    const capabilities = () => {
-        return Object.assign({
-            'browserName': 'chrome'
-        }, usingSauceLabs ? {
-                username, accessKey
-            } : {});
-    };
-    const serverUrl = () => {
-        return `http://localhost:${usingSauceLabs ? '4445' : '4444'}/wd/hub`;
-    };
-    const cap = capabilities();
-    const url = serverUrl();
-    const driver = new webdriver.Builder()
-        .withCapabilities(capabilities())
-        .usingServer(serverUrl())
+const webdriver = require('selenium-webdriver');
+const SauceInfo = require('./SauceInfo');
+const capabilities = (info, options) => {
+    return Object.assign(options, info.used ? {
+        username: info.username,
+        accessKey: info.accessKey
+    } : {});
+};
+const serverUrl = (info) => {
+    return `http://localhost:${info.used ? '4445' : '4444'}/wd/hub`;
+};
+
+module.exports = (options) => {
+    const info = SauceInfo();
+    return new webdriver.Builder()
+        .withCapabilities(capabilities(info, options))
+        .usingServer(serverUrl(info))
         .build();
-    return driver;
 };
