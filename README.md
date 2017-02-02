@@ -97,6 +97,25 @@ Note
  
 # Client Functional Test in Local
 
+run these three commands in different tabs
+
+```sh
+# start 'node' API server in the back
+npm run dev-server
+```
+
+```sh
+# start 'webpack-dev-server' to serve 'react' app but proxy API to 'node' API server
+npm run webpack-server
+```
+
+```sh
+# run client functional test
+npm run client-func-test
+```
+
+# Client Functional Test in `Sauce Labs`
+
 run these four commands in different tabs
 
 ```sh
@@ -110,12 +129,17 @@ npm run webpack-server
 ```
 
 ```sh
-# start 'selenium-standalone' server
-npm run selenium-server
+# create Sauce Connect Tunnel
+./sc -u YOUR_USERNAME -k YOUR_ACCESS_KEY
 ```
 
 ```sh
-# run client functional test
-npm run client-func-test
-```
+# setup Sauce Labs username
+export SAUCE_USERNAME=YOUR_USERNAME
 
+# setup Sauce Labs access key
+export SAUCE_ACCESS_KEY=YOUR_ACCESS_KEY
+
+# run client functional test in 'Sauce Labs'
+npm run client-func-test-cloud
+```
